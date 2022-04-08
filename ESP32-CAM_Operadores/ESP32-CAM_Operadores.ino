@@ -1,11 +1,28 @@
-// Ejemplo Operador modulo
+// Ejemplo Operador modulo en C
+// 8 abril 2022
+
+// Bibliotecas
+#include<Serial.h>
+
+// Constantes
+
+// Variables
+int dato = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-
+  Serial.begin(115200);
+  Serial.println("Programa de uso del operador: modulo %");
+  delay(1000);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  dato++;
+  if(dato > 8){
+    dato = 0;
+  }
 
+  dato %= 8;
+  
+  Serial.println(dato);
+  delay();
 }
