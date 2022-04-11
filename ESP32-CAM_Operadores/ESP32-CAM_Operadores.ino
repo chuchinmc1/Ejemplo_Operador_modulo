@@ -35,8 +35,9 @@ void loop() { // Inicio void loop()
   timeFinish = micros();
   Serial.println("Tiempo con comparaciones (us): ");
   Serial.println(timeFinish - timeStart);
+  delay(3000);
   
-  //dato = 0;
+  dato = 0;
   timeStart = micros();
   for (int i=0; i<10000; i++){// inicio ciclo for
     dato++;
@@ -47,7 +48,7 @@ void loop() { // Inicio void loop()
   Serial.println("Tiempo con operadores (us): ");
   Serial.println(timeFinish - timeStart);
   
-  delay(6000);
+  delay(3000);
     
 } //Fin void loop()
 
