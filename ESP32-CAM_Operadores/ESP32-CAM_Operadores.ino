@@ -1,28 +1,54 @@
-// Ejemplo Operador modulo en C
-// 8 abril 2022
+/* Ejemplo Operador modulo en C
+ * Por: JMC
+ * 8 abril 2022 
+ */ 
 
 // Bibliotecas
-#include<Serial.h>
 
 // Constantes
 
 // Variables
-int dato = 0;
+int dato;
+double timeStart, timeFinish;
 
-void setup() {
+// Definicion de objetos
+
+// Condiciones iniciales
+void setup() {// Inicio Void setup()
   Serial.begin(115200);
   Serial.println("Programa de uso del operador: modulo %");
-  delay(1000);
-}
+  delay(5000);
+}// Fin Void setup()
 
-void loop() {
-  dato++;
-  if(dato > 8){
-    dato = 0;
-  }
+// Cuerpo del programa
+void loop() { // Inicio void loop()
 
-  dato %= 8;
+  dato = 0;
+  timeStart = micros();
+  for (int i=0; i<10000; i++){// inicio ciclo for
+    dato++;
+    // contador de anillo con comparador
+    if(dato > 7){
+      dato = 0;
+    }
+  }//fin ciclo for
+  timeFinish = micros();
+  Serial.println("Tiempo con comparaciones (us): ");
+  Serial.println(timeFinish - timeStart);
   
-  Serial.println(dato);
-  delay();
-}
+  //dato = 0;
+  timeStart = micros();
+  for (int i=0; i<10000; i++){// inicio ciclo for
+    dato++;
+    // contador de anillo con operador
+    dato %= 8;    
+  }//fin ciclo for
+  timeFinish = micros();
+  Serial.println("Tiempo con operadores (us): ");
+  Serial.println(timeFinish - timeStart);
+  
+  delay(6000);
+    
+} //Fin void loop()
+
+// Funciones del usuario
